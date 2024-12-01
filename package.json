@@ -1,0 +1,14 @@
+{
+  "name": "advent-of-code",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "prettier": "^3.4.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "start": "bun --watch"
+  },
+  "type": "module"
+}
