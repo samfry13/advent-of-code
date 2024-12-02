@@ -8,7 +8,7 @@
     "typescript": "^5.0.0"
   },
   "scripts": {
-    "start": "bun --watch"
+    "watch": "bun --watch"
   },
   "type": "module"
 }
