@@ -1,14 +1,13 @@
+import { getInput } from "../../utils/file";
 import zip from "../../utils/zip";
 
 // Setup
-const inputFile = Bun.file("2024/1/input.txt");
+const input = await getInput(__dirname);
 
 const list1 = [],
   list2 = [];
 
-const textInput = await inputFile.text();
-
-for (const line of textInput.split("\n")) {
+for (const line of input.split("\n")) {
   const [item1, item2] = line.split("   ");
   list1.push(Number(item1));
   list2.push(Number(item2));
