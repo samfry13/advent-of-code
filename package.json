@@ -8,8 +8,10 @@
     "typescript": "^5.0.0"
   },
   "scripts": {
-    "start": "bun run index.ts",
-    "watch": "bun run index.ts --watch"
+    "start": "bun run index.ts"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@commander-js/extra-typings": "^13.0.0"
+  }
 }
