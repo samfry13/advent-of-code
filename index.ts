@@ -36,22 +36,26 @@ program
     }
 
     await $`mkdir -p ${path}`;
-    await $`touch ${path}/input.txt`;
-    await $`touch ${path}/test.txt`;
-    await $`touch ${path}/solution.ts`;
+    await Promise.all([
+      $`touch ${path}/input.txt`,
+      $`touch ${path}/test.txt`,
+      $`touch ${path}/solution.ts`,
+    ]);
 
     const solutionFile = Bun.file(`${path}/solution.ts`);
     const writer = solutionFile.writer();
 
-    writer.write(`import { readInput } from "../../util";\n\n`);
+    writer.write(`import { getInput } from "../../utils/file";\n\n`);
     writer.write(`const input = await getInput(__dirname, "test.txt");\n\n`);
     writer.write(`// ------------- PART 1 ---------------------\n\n`);
     writer.write(`// ------------- PART 2 ---------------------\n\n`);
     writer.end();
 
-    await $`code -r ${path}/input.txt`;
-    await $`code -r ${path}/test.txt`;
-    await $`code -r ${path}/solution.ts`;
+    await Promise.all([
+      $`code -r ${path}/input.txt`,
+      $`code -r ${path}/test.txt`,
+      $`code -r ${path}/solution.ts`,
+    ]);
   });
 
 program.parse();
