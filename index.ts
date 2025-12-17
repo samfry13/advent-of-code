@@ -11,7 +11,7 @@ program
   .option(
     "-y, --year <year>",
     "Year to run",
-    new Date().getFullYear().toString()
+    new Date().getFullYear().toString(),
   )
   .option("-w, --watch", "Watch for changes")
   .action(async (day, { year, watch }) => {
@@ -25,13 +25,13 @@ program
   .option(
     "-y, --year <year>",
     "Year to generate",
-    new Date().getFullYear().toString()
+    new Date().getFullYear().toString(),
   )
   .option("-o, --overwrite", "Overwrite existing files")
   .action(async (day, { year, overwrite }) => {
     const path = `./${year}/${day}`;
 
-    if (Bun.file(`${path}/solution.ts`).exists() && !overwrite) {
+    if ((await Bun.file(`${path}/solution.ts`).exists()) && !overwrite) {
       return console.error(`Solution files already exist for ${year}/${day}`);
     }
 
@@ -52,9 +52,9 @@ program
     writer.end();
 
     await Promise.all([
-      $`code -r ${path}/input.txt`,
-      $`code -r ${path}/test.txt`,
-      $`code -r ${path}/solution.ts`,
+      $`zed ${path}/input.txt`,
+      $`zed ${path}/test.txt`,
+      $`zed ${path}/solution.ts`,
     ]);
   });
 
